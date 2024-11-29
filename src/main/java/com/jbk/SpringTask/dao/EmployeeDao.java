@@ -82,4 +82,40 @@ public class EmployeeDao {
 		}
 		return msg;
 	}
+	
+
+	
+	public String deleteData(int id) {
+
+		Session ss = null;
+		Transaction tx = null;
+		String msg = null;
+
+		try {
+			ss = factory.openSession();
+			tx = ss.beginTransaction();
+
+			Employee emp = ss.get(Employee.class, id);
+
+			ss.remove(emp);
+			tx.commit();
+
+			msg = "Data Successfully Deleted...";
+
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+
+		} finally {
+			if (ss != null) {
+				ss.close();
+			}
+		}
+
+		return msg;
+	}
+	
+	
+	
 }
