@@ -26,7 +26,7 @@ public class EmployeeDao {
 			ss.persist(emp);
 
 			tx.commit();
-			
+
 			msg = "Data successfully inserted...";
 		} catch (Exception e) {
 
@@ -34,6 +34,46 @@ public class EmployeeDao {
 				tx.rollback();
 			}
 
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			}
+		}
+		return msg;
+	}
+
+	public String updateData(Employee emp, int id) {
+
+		Session ss = null;
+		Transaction tx = null;
+		String msg = null;
+
+		try {
+			ss = factory.openSession();
+			tx = ss.beginTransaction();
+
+			Employee e = ss.get(Employee.class, id);
+
+			e.setId(e.getId());
+			e.setName(e.getName());
+			e.setPhoneno(e.getPhoneno());
+			e.setDepartmentit(e.getDepartmentit());
+			e.setStatus(e.getStatus());
+			e.setCreateddtm(e.getCreateddtm());
+			e.setCreatedby(e.getCreatedby());
+			e.setUpdateddtm(e.getUpdateddtm());
+			e.setUpdatedby(e.getUpdatedby());
+			e.setCid(e.getCid());
+
+			ss.merge(e);
+			tx.commit();
+			msg = "Data Successfully Updated...";
+
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
 			e.printStackTrace();
 		} finally {
 			if (ss != null) {
