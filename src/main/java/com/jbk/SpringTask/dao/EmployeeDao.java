@@ -107,6 +107,7 @@ public class EmployeeDao {
 			if (tx != null) {
 				tx.rollback();
 			}
+			e.printStackTrace();
 
 		} finally {
 			if (ss != null) {
@@ -138,6 +139,7 @@ public class EmployeeDao {
 			if (tx != null) {
 				tx.rollback();
 			}
+			e.printStackTrace();
 		} finally {
 			if (ss != null) {
 				ss.close();
@@ -170,6 +172,7 @@ public class EmployeeDao {
 			if (tx != null) {
 				tx.rollback();
 			}
+			e.printStackTrace();
 		} finally {
 			if (ss != null) {
 				ss.close();
