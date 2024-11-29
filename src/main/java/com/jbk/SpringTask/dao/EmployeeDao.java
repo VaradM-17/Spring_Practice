@@ -1,8 +1,11 @@
 package com.jbk.SpringTask.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -82,9 +85,7 @@ public class EmployeeDao {
 		}
 		return msg;
 	}
-	
 
-	
 	public String deleteData(int id) {
 
 		Session ss = null;
@@ -115,7 +116,66 @@ public class EmployeeDao {
 
 		return msg;
 	}
-	
-	
-	
+
+	public List<Employee> displayallData() {
+
+		Session ss = null;
+		Transaction tx = null;
+		List<Employee> list = null;
+
+		try {
+			ss = factory.openSession();
+			tx = ss.beginTransaction();
+
+			String hqlQuery = "from Employee";
+			Query<Employee> query = ss.createQuery(hqlQuery, Employee.class);
+			list = query.list();
+
+			tx.commit();
+
+			return list;
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			if (ss != null) {
+				ss.close();
+			}
+		}
+		return list;
+	}
+
+	public Employee fetchsingleData(int id) {
+
+		Session ss = null;
+		Transaction tx = null;
+		Employee emp = null;
+
+		try {
+			ss = factory.openSession();
+			tx = ss.beginTransaction();
+
+			String hqlQuery = "from Employee where id = :myid";
+			Query<Employee> query = ss.createQuery(hqlQuery, Employee.class);
+			query.setParameter("myid", id);
+
+			emp = query.getSingleResult();
+
+			tx.commit();
+
+			return emp;
+
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			if (ss != null) {
+				ss.close();
+			}
+		}
+		return emp;
+	}
+
 }
