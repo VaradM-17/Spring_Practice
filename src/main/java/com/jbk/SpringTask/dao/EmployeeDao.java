@@ -148,7 +148,8 @@ public class EmployeeDao {
 		return list;
 	}
 
-	public Employee fetchsingleData(int id) {
+	// by id
+	public Employee displaysingleData(int id) {
 
 		Session ss = null;
 		Transaction tx = null;
