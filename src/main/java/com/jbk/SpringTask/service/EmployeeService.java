@@ -1,5 +1,6 @@
 package com.jbk.SpringTask.service;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,15 @@ public class EmployeeService {
 		}
 		return msg;
 	}
+	
+	public List<Employee> displayallData() {
+		List<Employee> list = employeedao.displayallData();
+//		if (Objects.isNull(list)) {
+//			msg = 
+//		}
+		return list;
+	}
+
+	
 	
 }
