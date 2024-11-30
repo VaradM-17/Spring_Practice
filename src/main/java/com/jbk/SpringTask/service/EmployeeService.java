@@ -10,6 +10,7 @@ import com.jbk.SpringTask.entity.Employee;
 
 @Service
 public class EmployeeService {
+	
 	@Autowired
 	EmployeeDao employeedao;
 
@@ -22,5 +23,17 @@ public class EmployeeService {
 		}
 		return msg;
 	}
+
+	
+	public String updateData(Employee emp, int id) {
+
+		String msg = employeedao.updateData(emp, id);
+
+		if (Objects.isNull(msg)) {
+			msg = "Data not updated...";
+		}
+		return msg;
+	}
+
 	
 }
