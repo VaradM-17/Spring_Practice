@@ -54,6 +54,16 @@ public class EmployeeService {
 		return list;
 	}
 
+	public Employee displaysingleData(int id) {
+		Employee emp = employeedao.displaysingleData(id);
+//		if (Objects.isNull(emp)) {
+//			
+//		}
+		return emp;
+
+	}
+	
+	
 	
 	
 }
