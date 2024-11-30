@@ -35,5 +35,14 @@ public class EmployeeService {
 		return msg;
 	}
 
+	public String deleteData(int id) {
+
+		String msg = employeedao.deleteData(id);
+
+		if (Objects.isNull(msg)) {
+			msg = "Data not deleted...";
+		}
+		return msg;
+	}
 	
 }
