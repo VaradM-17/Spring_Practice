@@ -1,6 +1,7 @@
 package com.jbk.SpringTask.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,6 +26,12 @@ public class EmployeeController {
 	@PutMapping("/updatedata/{id}")
 	public String updateData(@RequestBody Employee emp, @PathVariable int id) {
 		String msg = employeeservice.updateData(emp, id);
+		return msg;
+	}
+	
+	@DeleteMapping("/deletedata/{id}")
+	public String deleteData(@PathVariable int id) {
+		String msg = employeeservice.deleteData(id);
 		return msg;
 	}
 }
