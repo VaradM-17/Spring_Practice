@@ -56,5 +56,9 @@ public class EmployeeService {
 
 	}
 
+	public List<Employee> displayinactive() {
+		List<Employee> emp = employeedao.displayinactive();
+		return emp;
+	}
 
 }
