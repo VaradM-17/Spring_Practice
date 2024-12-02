@@ -50,6 +50,11 @@ public class EmployeeController {
 		return e;
 	}
 
+	@GetMapping("/inactive")
+	public List<Employee> displayinactive() {
+		List<Employee> emp = employeeservice.displayinactive();
+		return emp;
+	}
 	
 
 }
