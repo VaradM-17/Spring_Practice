@@ -182,4 +182,35 @@ public class EmployeeDao {
 		return emp;
 	}
 
+	// by status
+
+	public List<Employee> displayinactive() {
+
+		Session ss = null;
+		Transaction tx = null;
+		List<Employee> inactive = null;
+
+		try {
+			ss = factory.openSession();
+			tx = ss.beginTransaction();
+
+			String hqlQuery = "from Employee where status = 'inactive'";
+			Query<Employee> query = ss.createQuery(hqlQuery,Employee.class);
+			inactive = query.list();
+
+			tx.commit();
+
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			}
+		}
+		return inactive;
+	}
+
 }

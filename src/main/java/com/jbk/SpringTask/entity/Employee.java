@@ -1,5 +1,6 @@
 package com.jbk.SpringTask.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -10,6 +11,7 @@ public class Employee {
 	private String name;
 	private String phoneno;
 	private String departmentit;
+	@Column(name = "status")
 	private String status;
 	private String createddtm;
 	private String createdby;

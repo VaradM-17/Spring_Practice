@@ -10,5 +10,4 @@ public class SpringTaskApplication {
 		SpringApplication.run(SpringTaskApplication.class, args);
 		System.out.println("Application Started...");
 	}
-
 }

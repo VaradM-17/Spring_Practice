@@ -25,28 +25,31 @@ public class EmployeeController {
 		String msg = employeeservice.insertData(emp);
 		return msg;
 	}
-	
+
 	@PutMapping("/updatedata/{id}")
 	public String updateData(@RequestBody Employee emp, @PathVariable int id) {
 		String msg = employeeservice.updateData(emp, id);
 		return msg;
 	}
-	
+
 	@DeleteMapping("/deletedata/{id}")
 	public String deleteData(@PathVariable int id) {
 		String msg = employeeservice.deleteData(id);
 		return msg;
 	}
-	
+
 	@GetMapping("/displayalldata")
 	public List<Employee> displayallData() {
 		List<Employee> list = employeeservice.displayallData();
 		return list;
 	}
-	
+
 	@GetMapping("/displaysingledata/{id}")
 	public Employee displaysingleData(@PathVariable int id) {
 		Employee e = employeeservice.displaysingleData(id);
 		return e;
 	}
+
+	
+
 }

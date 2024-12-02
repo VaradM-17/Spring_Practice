@@ -11,7 +11,7 @@ import com.jbk.SpringTask.entity.Employee;
 
 @Service
 public class EmployeeService {
-	
+
 	@Autowired
 	EmployeeDao employeedao;
 
@@ -25,7 +25,6 @@ public class EmployeeService {
 		return msg;
 	}
 
-	
 	public String updateData(Employee emp, int id) {
 
 		String msg = employeedao.updateData(emp, id);
@@ -45,25 +44,17 @@ public class EmployeeService {
 		}
 		return msg;
 	}
-	
+
 	public List<Employee> displayallData() {
 		List<Employee> list = employeedao.displayallData();
-//		if (Objects.isNull(list)) {
-//			msg = 
-//		}
 		return list;
 	}
 
 	public Employee displaysingleData(int id) {
 		Employee emp = employeedao.displaysingleData(id);
-//		if (Objects.isNull(emp)) {
-//			
-//		}
 		return emp;
 
 	}
-	
-	
-	
-	
+
+
 }
